@@ -16,6 +16,8 @@ doneHeading.style.color = "white";
 doneDiv.appendChild(doneHeading);
 container.appendChild(doneDiv);
 
+const deletedTasks = [];
+
 function createTask() {
   const inputValue = document.getElementById("input-field").value;
   document.getElementById("input-field").value = "";
@@ -118,8 +120,26 @@ function createTask() {
     doneDiv.appendChild(doneTask);
 
     undo.addEventListener("click", () => {
-      alert("move");
+      doneTask.remove();
+      containerTask.style.display = "flex";
+      tasksDiv.appendChild(containerTask);
+      taskCounter++;
+      tasksHeading.innerHTML = `Tasks - ${taskCounter}`;
+
+      const index = deletedTasks.indexOf(doneTask);
+      if (index !== -1) {
+        deletedTasks.splice(index, 1);
+      }
+
+      doneCounter--;
+      doneHeading.innerHTML = `Done - ${doneCounter}`;
     });
+
+    const deletedTask = {
+      task: containerTask,
+      doneTask: doneTask,
+    };
+    deletedTasks.push(deletedTask);
 
     doneCounter++;
     doneHeading.innerHTML = `Done - ${doneCounter}`;
@@ -140,6 +160,12 @@ function createTask() {
     } else {
       tasksHeading.innerHTML = `Tasks - ${taskCounter}`;
     }
+
+    const deletedTask = {
+      task: containerTask,
+      doneTask: null,
+    };
+    deletedTasks.push(deletedTask);
   });
 
   taskCounter++;
