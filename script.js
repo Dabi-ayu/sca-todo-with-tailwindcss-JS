@@ -92,7 +92,6 @@ function createTask() {
     const undo = document.createElement("img");
     undo.src = "./assets/undo-xxl.png";
     undo.alt = "check-icon";
-    undo.style.cursor = "pointer";
     undo.width = 20;
 
     doneParagraph.textContent = inputValue;
@@ -118,12 +117,20 @@ function createTask() {
 
     taskCounter--;
     tasksHeading.innerHTML = `Tasks - ${taskCounter}`;
+
+    if (taskCounter === 0) {
+      tasksDiv.remove();
+    }
   });
 
   span2.addEventListener("click", () => {
     containerTask.remove();
     taskCounter--;
     tasksHeading.innerHTML = `Tasks - ${taskCounter}`;
+
+    if (taskCounter === 0) {
+      tasksDiv.remove();
+    }
   });
 
   taskCounter++;
