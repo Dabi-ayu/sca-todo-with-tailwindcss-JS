@@ -132,7 +132,11 @@ function createTask() {
       }
 
       doneCounter--;
-      doneHeading.innerHTML = `Done - ${doneCounter}`;
+      if (doneCounter == 0) {
+        doneHeading.innerHTML = null;
+      } else {
+        doneHeading.innerHTML = `Done - ${doneCounter}`;
+      }
     });
 
     const deletedTask = {
