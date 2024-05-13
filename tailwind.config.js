@@ -16,9 +16,9 @@ module.exports = {
         headingColor: "#FFFFFF",
         bgItem: "#15101C",
         btnHover: "#2B114E",
+        cancelled: "#58CFB0",
       },
     },
   },
   plugins: [],
 };
-
