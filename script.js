@@ -116,11 +116,20 @@ function createTask() {
     doneTask.appendChild(undo);
 
     doneDiv.appendChild(doneTask);
+
+    undo.addEventListener("click", () => {
+      alert("move");
+    });
+
     doneCounter++;
     doneHeading.innerHTML = `Done - ${doneCounter}`;
 
     taskCounter--;
-    tasksHeading.innerHTML = `Tasks - ${taskCounter}`;
+    if (taskCounter == 0) {
+      tasksHeading.innerHTML = null;
+    } else {
+      tasksHeading.innerHTML = `Tasks - ${taskCounter}`;
+    }
   });
 
   span2.addEventListener("click", () => {
