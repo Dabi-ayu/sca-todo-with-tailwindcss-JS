@@ -19,6 +19,9 @@ container.appendChild(doneDiv);
 function createTask() {
   const inputValue = document.getElementById("input-field").value;
   document.getElementById("input-field").value = "";
+  if (inputValue === "") {
+    return;
+  }
 
   const containerTask = document.createElement("div");
   containerTask.style.marginTop = "10px";
